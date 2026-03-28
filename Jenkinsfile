@@ -8,7 +8,7 @@ pipeline {
     }
 
     environment {
-        APP_NAME    = 'my-nginx-web'
+        APP_NAME    = 'nuyt47/my-nginx-web'
         IMAGE_TAG   = "${BUILD_NUMBER}"
     }
 
@@ -41,7 +41,6 @@ pipeline {
         stage('Verify Deployment') {
             steps {
                 script {
-                    // sh "kubectl rollout status deployment/nginx-deployment --timeout=120s"
                     sh "kubectl get pods -l app=my-nginx"
                     sh "kubectl get svc nginx-service"
                     sh "kubectl get ingress nginx-ingress"
